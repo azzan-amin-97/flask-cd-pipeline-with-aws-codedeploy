@@ -84,4 +84,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host=BASE_HOST, port=BASE_PORT, debug=True)
+    app.run(host=BASE_HOST, port=BASE_PORT)
