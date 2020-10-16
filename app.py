@@ -67,5 +67,18 @@ api.add_resource(Subtration, '/api/subtraction')
 api.add_resource(Multiplication, '/api/multiplication')
 api.add_resource(Division, '/api/division')
 
+@app.route('/')
+def home():
+    num1 = 1
+    num2 = 2
+
+    response = requests.post("http://127.0.0.1:5000/api/addition",
+                             data={'num1': num1,
+                                   'num2': num2})
+    res_json = response.json()
+    result = res_json['result']
+    return f'<H1>{num1} + {num2} = {result}</H1>'
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(port=5000, debug=True)

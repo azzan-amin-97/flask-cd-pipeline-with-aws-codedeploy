@@ -1,23 +1,26 @@
 aniso8601==8.0.0
-brotlipy==0.7.0
+atomicwrites==1.4.0
+attrs==20.2.0
 certifi==2020.6.20
-cffi @ file:///C:/ci/cffi_1600699246375/work
 chardet==3.0.4
 click==7.1.2
-cryptography @ file:///C:/ci/cryptography_1601046905460/work
+colorama==0.4.3
 Flask==1.1.2
 Flask-RESTful==0.3.8
-idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+idna==2.10
+iniconfig==1.0.1
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
-pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
-pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
-PySocks==1.7.1
+packaging==20.4
+pluggy==0.13.1
+py==1.9.0
+pyparsing==2.4.7
+pytest==6.1.1
 pytz==2020.1
-requests @ file:///tmp/build/80754af9/requests_1592841827918/work
+requests==2.24.0
 six==1.15.0
-urllib3 @ file:///tmp/build/80754af9/urllib3_1597086586889/work
+toml==0.10.1
+urllib3==1.25.10
 Werkzeug==1.0.1
-win-inet-pton==1.1.0
 wincertstore==0.2
