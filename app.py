@@ -4,6 +4,8 @@ import requests
 
 app = Flask(__name__)
 
+BASE_HOST = '0.0.0.0'
+BASE_PORT = 80
 
 class Addition(Resource):
     def post(self):
@@ -73,7 +75,7 @@ def home():
     num1 = 1
     num2 = 2
 
-    response = requests.post("http://0.0.0.0:80/api/addition",
+    response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/addition",
                              data={'num1': num1,
                                    'num2': num2})
     res_json = response.json()
@@ -82,4 +84,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host=BASE_HOST, port=BASE_PORT, debug=True)

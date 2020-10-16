@@ -35,4 +35,4 @@ jobs:
       
       # Build the app and run tests
       - name: Build and Run Test
-        run: python app_test.py & python -m unittest run_test
+        run: python app.py & python -m unittest run_test

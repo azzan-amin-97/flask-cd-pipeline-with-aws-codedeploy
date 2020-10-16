@@ -1,6 +1,8 @@
 import unittest
 import requests
 
+from app import BASE_HOST, BASE_PORT
+
 
 class BasicTests(unittest.TestCase):
 
@@ -10,7 +12,7 @@ class BasicTests(unittest.TestCase):
         num2 = 200
 
         # When
-        response = requests.post("http://127.0.0.1:5000/api/addition",
+        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/addition",
                                  data={'num1': num1,
                                        'num2': num2})
 
@@ -26,7 +28,7 @@ class BasicTests(unittest.TestCase):
         num2 = 1
 
         # When
-        response = requests.post("http://127.0.0.1:5000/api/subtraction",
+        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/subtraction",
                                  data={'num1': num1,
                                        'num2': num2})
 
@@ -42,7 +44,7 @@ class BasicTests(unittest.TestCase):
         num2 = 2
 
         # When
-        response = requests.post("http://127.0.0.1:5000/api/multiplication",
+        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/multiplication",
                                  data={'num1': num1,
                                        'num2': num2})
 
@@ -58,7 +60,7 @@ class BasicTests(unittest.TestCase):
         num2 = 2
 
         # When
-        response = requests.post("http://127.0.0.1:5000/api/division",
+        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/division",
                                  data={'num1': num1,
                                        'num2': num2})
 
