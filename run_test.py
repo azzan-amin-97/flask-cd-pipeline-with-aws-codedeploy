@@ -28,7 +28,7 @@ class BasicTests(unittest.TestCase):
         num2 = 1
 
         # When
-        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/subtraction",
+        response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/subtraction",
                                  data={'num1': num1,
                                        'num2': num2})
 
