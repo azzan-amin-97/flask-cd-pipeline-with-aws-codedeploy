@@ -67,6 +67,7 @@ api.add_resource(Subtration, '/api/subtraction')
 api.add_resource(Multiplication, '/api/multiplication')
 api.add_resource(Division, '/api/division')
 
+
 @app.route('/')
 def home():
     num1 = 1
