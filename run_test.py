@@ -1,7 +1,7 @@
 import unittest
 import requests
 
-from app import BASE_HOST, BASE_PORT
+from app_test import BASE_HOST, BASE_PORT
 
 
 class BasicTests(unittest.TestCase):
