@@ -12,10 +12,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        python-version: [3.8]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,7 +22,7 @@ jobs:
       - name: Set up Python all python version
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.8
           architecture: x64
       
       # Install all the app dependencies
@@ -36,3 +32,47 @@ jobs:
       # Build the app and run tests
       - name: Build and Run Test
         run: python app_test.py & python -m unittest run_test
+        
+  staging-deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    steps:
+    # Set up Python Version
+    - name: Set up Python all python version
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        architecture: x64
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      
+    - name: AWS Deploy push
+      uses: ItsKarma/aws-cli@v1.70.0
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: "us-east-2"
+      with:
+        args: >-
+          deploy push
+          --application-name flask-app
+          --description "This is a revision for the flask-app"
+          --ignore-hidden-files
+          --s3-location s3://tlo-scs-report/code-deploy/application.zip
+          --source .
+    - name: AWS Create Deploy
+      uses: ItsKarma/aws-cli@v1.70.0
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: "us-east-2"
+      with:
+        args: >-
+          deploy create-deployment
+          --application-name flask-app
+          --deployment-config-name CodeDeployDefault.OneAtATime
+          --deployment-group-name Testing
+          --file-exists-behavior OVERWRITE
+          --s3-location bucket=tlo-scs-report,key=code-deploy/application.zip,bundleType=zip
+
