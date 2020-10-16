@@ -73,7 +73,7 @@ def home():
     num1 = 1
     num2 = 2
 
-    response = requests.post("http://127.0.0.1:5000/api/addition",
+    response = requests.post("http://0.0.0.0:80/api/addition",
                              data={'num1': num1,
                                    'num2': num2})
     res_json = response.json()
@@ -82,4 +82,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
