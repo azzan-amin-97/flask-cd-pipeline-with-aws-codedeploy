@@ -29,8 +29,7 @@ class BasicTests(unittest.TestCase):
 
         # When
         response = requests.post(f"http://{BASE_HOST}:{BASE_PORT}/api/subtraction",
-                                 data={'num1': num1,
-                                       'num2': num2})
+                                 data={'num1': num1, 'num2': num2})
 
         res_json = response.json()
         result = res_json['result']

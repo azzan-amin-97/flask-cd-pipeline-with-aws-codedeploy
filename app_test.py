@@ -5,18 +5,15 @@ import requests
 app = Flask(__name__)
 
 BASE_HOST = '127.0.0.1'
-BASE_PORT = 5000
+BASE_PORT = 5005
 
 class Addition(Resource):
     def post(self):
         numbers = request.form.to_dict()
-        num = []
-        # Append the dateRange(Dict) value into dateList
-        for key, value in numbers.items():
-            temp = value
-            num.append(temp)
-        num1 = int(num[0])
-        num2 = int(num[1])
+
+        num1 = int(numbers['num1'])
+        num2 = int(numbers['num2'])
+
         result = num1 + num2
         return jsonify(result=result)
 
@@ -24,13 +21,10 @@ class Addition(Resource):
 class Subtration(Resource):
     def post(self):
         numbers = request.form.to_dict()
-        num = []
-        # Append the dateRange(Dict) value into dateList
-        for key, value in numbers.items():
-            temp = value
-            num.append(temp)
-        num1 = int(num[0])
-        num2 = int(num[1])
+
+        num1 = int(numbers['num1'])
+        num2 = int(numbers['num2'])
+
         result = num1 - num2
         return jsonify(result=result)
 
@@ -38,13 +32,10 @@ class Subtration(Resource):
 class Multiplication(Resource):
     def post(self):
         numbers = request.form.to_dict()
-        num = []
-        # Append the dateRange(Dict) value into dateList
-        for key, value in numbers.items():
-            temp = value
-            num.append(temp)
-        num1 = int(num[0])
-        num2 = int(num[1])
+
+        num1 = int(numbers['num1'])
+        num2 = int(numbers['num2'])
+
         result = num1 * num2
         return jsonify(result=result)
 
@@ -52,13 +43,10 @@ class Multiplication(Resource):
 class Division(Resource):
     def post(self):
         numbers = request.form.to_dict()
-        num = []
-        # Append the dateRange(Dict) value into dateList
-        for key, value in numbers.items():
-            temp = value
-            num.append(temp)
-        num1 = int(num[0])
-        num2 = int(num[1])
+
+        num1 = int(numbers['num1'])
+        num2 = int(numbers['num2'])
+
         result = num1 / num2
         return jsonify(result=result)
 
